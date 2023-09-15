@@ -1,11 +1,13 @@
 import './App.css'
+import Header from './component/Header'
+import Courses from './component/courses/Courses'
 function App() {
  
   return (
     <>
       
-      <h1 className="text-center  text-5xl">Course Registration</h1>
-      
+      <Header></Header>
+      <Courses></Courses>
     </>
   )
 }
