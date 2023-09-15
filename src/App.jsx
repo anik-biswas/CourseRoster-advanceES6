@@ -1,13 +1,13 @@
 import './App.css'
 import Header from './component/Header'
-import Courses from './component/courses/Courses'
+import Container from './component/container/Container'
 function App() {
  
   return (
     <>
       
       <Header></Header>
-      <Courses></Courses>
+      <Container></Container>
     </>
   )
 }
