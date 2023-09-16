@@ -5,7 +5,10 @@ import Sideshow from "../aside/Sideshow";
 const Courses = () => {
     const [courses,setCourses] = useState([]);
     const [selectedCourse,setSelectedCourse] = useState([]);
-    useEffect( () => {
+    const [totalCost,setTotalCost] = useState(0);
+    const [totalCredit,setTotalCredit] = useState(0);
+    const [totalRemaining,setTotalRemaining] = useState(20);
+     useEffect( () => {
         fetch('courses.json')
         .then(res => res.json())
         .then (data => setCourses(data))
@@ -15,10 +18,24 @@ const Courses = () => {
     const handleSelectCourse = (course) =>{
         const isSelect = selectedCourse.find(item => item.id===course.id);
         
+        let totalCost=course.price;
+        let totalCredit=course.credit;
+        let totalRemaining =20;
+        
         if(isSelect){
             return alert("This is Already Selected")
         }
         else {
+            selectedCourse.forEach((item) =>{
+                totalCost=totalCost+item.price;
+                totalCredit= totalCredit+item.credit;
+            })
+            //console.log(totalCost);
+
+            totalRemaining = totalRemaining-totalCredit;
+            setTotalCost(totalCost)
+            setTotalCredit(totalCredit)
+            setTotalRemaining(totalRemaining)
             setSelectedCourse([...selectedCourse,course])
         }
     }
@@ -56,7 +73,7 @@ const Courses = () => {
                 
             </div>
             <div>
-            <Sideshow selectedCourse={selectedCourse}></Sideshow>
+            <Sideshow selectedCourse={selectedCourse} totalCost={totalCost} totalCredit={totalCredit} totalRemaining={totalRemaining} ></Sideshow>
             </div>
             
        </div>
