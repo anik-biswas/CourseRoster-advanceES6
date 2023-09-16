@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import creditImg from '../../assets/credit.svg'
 import Sideshow from "../aside/Sideshow";
-
+import { ToastContainer,toast } from "react-toastify";
+import  'react-toastify/dist/ReactToastify.css';
 const Courses = () => {
     const [courses,setCourses] = useState([]);
     const [selectedCourse,setSelectedCourse] = useState([]);
@@ -23,7 +24,9 @@ const Courses = () => {
         let totalRemaining =20;
         
         if(isSelect){
-            return alert("This is Already Selected")
+            //return alert("This is Already Selected")
+           toast.error('Card Already Added.', { autoClose: 4000 });
+            
         }
         else {
             selectedCourse.forEach((item) =>{
@@ -35,12 +38,14 @@ const Courses = () => {
             totalRemaining = totalRemaining-totalCredit;
             if(totalCredit>20)
             {
-                return alert("cant added");
+                toast.error('You Can not added Over 20 Credit', { autoClose: 4000 });
             }
-            setTotalCost(totalCost)
+            else {
+                setTotalCost(totalCost)
             setTotalCredit(totalCredit)
             setTotalRemaining(totalRemaining)
             setSelectedCourse([...selectedCourse,course])
+            }
         }
     }
     
@@ -77,6 +82,7 @@ const Courses = () => {
                 
             </div>
             <div>
+            <ToastContainer/>
             <Sideshow selectedCourse={selectedCourse} totalCost={totalCost} totalCredit={totalCredit} totalRemaining={totalRemaining} ></Sideshow>
             </div>
             

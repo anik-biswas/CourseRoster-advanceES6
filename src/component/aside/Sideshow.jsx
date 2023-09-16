@@ -1,8 +1,5 @@
 const Sideshow = ({selectedCourse,totalCost,totalCredit,totalRemaining}) => {
     //console.log(selectedCourse)
-    console.log(totalCost)
-    console.log(totalCredit)
-    console.log(totalRemaining)
     return (
         <div>
             <div className="card w-80 bg-base-100 shadow-xl p-5">
@@ -15,8 +12,8 @@ const Sideshow = ({selectedCourse,totalCost,totalCredit,totalRemaining}) => {
                     
                 ))}
 
-            <h3>Total Cost : {totalCost} </h3>
-            <h3>Total Credits : {totalCredit}</h3>
+            <h3 className="font-bold">Total Cost : {totalCost} $ </h3>
+            <h3 className="font-bold">Total Credits : {totalCredit} Hrs </h3>
             </div>
         </div>
     );
