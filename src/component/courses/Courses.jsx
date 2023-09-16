@@ -42,9 +42,9 @@ const Courses = () => {
             }
             else {
                 setTotalCost(totalCost)
-            setTotalCredit(totalCredit)
-            setTotalRemaining(totalRemaining)
-            setSelectedCourse([...selectedCourse,course])
+                setTotalCredit(totalCredit)
+                setTotalRemaining(totalRemaining)
+                setSelectedCourse([...selectedCourse,course])
             }
         }
     }
