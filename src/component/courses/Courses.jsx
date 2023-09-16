@@ -33,6 +33,10 @@ const Courses = () => {
             //console.log(totalCost);
 
             totalRemaining = totalRemaining-totalCredit;
+            if(totalCredit>20)
+            {
+                return alert("cant added");
+            }
             setTotalCost(totalCost)
             setTotalCredit(totalCredit)
             setTotalRemaining(totalRemaining)
