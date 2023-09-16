@@ -3,11 +3,10 @@ import Sideshow from "../aside/Sideshow";
 
 const Container = () => {
     return (
-        <div className="flex flex-row  gap-20 ">
+        <div className="flex flex-row  gap-12 ">
             
             <Courses></Courses>
             
-            <Sideshow></Sideshow>
         </div>
     );
 };

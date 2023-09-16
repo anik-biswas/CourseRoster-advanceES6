@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import creditImg from '../../assets/credit.svg'
+import Sideshow from "../aside/Sideshow";
 
 const Courses = () => {
     const [courses,setCourses] = useState([]);
+    const [selectedCourse,setSelectedCourse] = useState([]);
     useEffect( () => {
         fetch('courses.json')
         .then(res => res.json())
@@ -10,8 +12,19 @@ const Courses = () => {
         
     },[])
     //console.log(courses)
+    const handleSelectCourse = (course) =>{
+        const isSelect = selectedCourse.find(item => item.id===course.id);
+        
+        if(isSelect){
+            return alert("This is Already Selected")
+        }
+        else {
+            setSelectedCourse([...selectedCourse,course])
+        }
+    }
+    
     return (
-       <div >
+       <div className="flex flex-row  gap-12 ">
          <div className="grid grid-cols-3 gap-5 ">
             {
                 courses.map(course => (
@@ -34,7 +47,7 @@ const Courses = () => {
                             </div>
                         </div>
                         <div className="card-actions ">
-                        <button className="btn btn-primary w-full">Select</button>
+                        <button onClick={() => handleSelectCourse(course) } className="btn btn-primary w-full">Select</button>
                         </div>
                     </div>
                     </div>
@@ -42,7 +55,12 @@ const Courses = () => {
                 ))}
                 
             </div>
+            <div>
+            <Sideshow selectedCourse={selectedCourse}></Sideshow>
+            </div>
+            
        </div>
+       
     );
 };
 
